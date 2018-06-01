@@ -77,7 +77,8 @@ module Mongoid
         it "should by default use demodulized and underscored model names for the count field" do
           book = library.books.last
           book.foreign_publication_count.should == 0
-          book.foreign_publications.push( Book::ForeignPublication.new )
+          foreign_publication = Book::ForeignPublication.new(book: book)
+          foreign_publication.save!
           book.foreign_publication_count.should == 1
         end
 
@@ -89,9 +90,9 @@ module Mongoid
           end
 
           before do
-            book.save
-            book.pages.create(:title => "it was a long and stormy night")
             library.books << book
+            book.save!
+            book.pages.create(:title => "it was a long and stormy night")
           end
 
           it "should have 1 page in pages" do
