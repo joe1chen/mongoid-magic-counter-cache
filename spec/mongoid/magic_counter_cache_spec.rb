@@ -77,8 +77,12 @@ module Mongoid
         it "should by default use demodulized and underscored model names for the count field" do
           book = library.books.last
           book.foreign_publication_count.should == 0
-          foreign_publication = Book::ForeignPublication.new(book: book)
-          foreign_publication.save!
+          if Mongoid::Compatibility::Version.mongoid6_or_newer?
+            foreign_publication = Book::ForeignPublication.new(book: book)
+            foreign_publication.save!
+          else
+            book.foreign_publications.push( Book::ForeignPublication.new )
+          end
           book.foreign_publication_count.should == 1
         end
 

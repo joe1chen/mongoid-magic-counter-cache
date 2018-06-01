@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency "mongoid"
+  s.add_dependency "mongoid-compatibility"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
 end
