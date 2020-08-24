@@ -273,15 +273,15 @@ module Mongoid
           post.comments.size.should == post.comment_count
         end
 
-        it "shouldnot increase counter when unpublished comment is added" do
+        it "should not increase counter when unpublished comment is added" do
           post.comments << Comment.new
           post.comments.size.should == post.comment_count + 1
         end
 
-        it "shouldnot decrease counter when unpublished comment is deleted" do
+        it "should not decrease counter when unpublished comment is deleted" do
           post.comments << Comment.new(:remark => "2nd comment")
           post.comments << Comment.new(:remark => "3rd comment", :is_published => true)
-          Comment.where(:remark == "2nd comment").first.destroy
+          Comment.where(remark: "2nd comment").first.destroy
           post.comment_count.should == 2
         end
 
@@ -489,7 +489,7 @@ module Mongoid
         it "shouldnot decrease counter when unpublished comment is deleted" do
           post.update_comments << UpdateComment.new(:remark => "2nd comment")
           post.update_comments << UpdateComment.new(:remark => "3rd comment", :is_published => true)
-          UpdateComment.where(:remark == "2nd comment").first.destroy
+          UpdateComment.where(remark: "2nd comment").first.destroy
           post.update_comment_count.should == 2
         end
 
