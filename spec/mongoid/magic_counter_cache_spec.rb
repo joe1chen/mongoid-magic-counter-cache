@@ -22,7 +22,7 @@ module Mongoid
 
         before do
           library.save
-          library.books.create(:title => "War and Peace")
+          library.books.create(title: "War and Peace")
         end
 
         it "sets the target of the relation" do
@@ -96,7 +96,7 @@ module Mongoid
           before do
             library.books << book
             book.save!
-            book.pages.create(:title => "it was a long and stormy night")
+            book.pages.create(title: "it was a long and stormy night")
           end
 
           it "should have 1 page in pages" do
@@ -137,12 +137,12 @@ module Mongoid
         end
 
         let(:song) do
-          Song.new(:title => "love song")
+          Song.new(title: "love song")
         end
 
         before do
           album.save
-          album.songs.create(:title => "create you a song")
+          album.songs.create(title: "create you a song")
         end
 
         it "should have 1 song in songs" do
@@ -224,12 +224,12 @@ module Mongoid
         end
 
         let(:comment) do
-          Comment.new(:is_published => true)
+          Comment.new(is_published: true)
         end
 
         before do
           post.save
-          post.comments.create(:remark => "I agree with you", :is_published => true)
+          post.comments.create(remark: "I agree with you", is_published: true)
         end
 
         it "sets the target of the relation" do
@@ -246,7 +246,7 @@ module Mongoid
 
         it "sets the counter cache equal to the relation count on addition" do
           5.times do |n|
-            post.comments << Comment.new(:is_published => true)
+            post.comments << Comment.new(is_published: true)
             post.comment_count.should == post.comments.size 
           end
         end
@@ -279,8 +279,8 @@ module Mongoid
         end
 
         it "should not decrease counter when unpublished comment is deleted" do
-          post.comments << Comment.new(:remark => "2nd comment")
-          post.comments << Comment.new(:remark => "3rd comment", :is_published => true)
+          post.comments << Comment.new(remark: "2nd comment")
+          post.comments << Comment.new(remark: "3rd comment", is_published: true)
           Comment.where(remark: "2nd comment").first.destroy
           post.comment_count.should == 2
         end
@@ -299,7 +299,7 @@ module Mongoid
           end
 
           it "should not decrease counter when old published comment is unpublished" do
-            new_comment = Comment.new(:is_published => true)
+            new_comment = Comment.new(is_published: true)
             post.comments << new_comment
             post.comments.size.should == post.comment_count
 
@@ -335,12 +335,12 @@ module Mongoid
         end
 
         let(:review) do
-          Review.new(:comment => "This is nice article")
+          Review.new(comment: "This is nice article")
         end
 
         before do
           article.save
-          article.reviews.create(:comment => "This is very good article", :is_published => true)
+          article.reviews.create(comment: "This is very good article", is_published: true)
         end
 
         it "should have 1 review in reviews" do
@@ -361,7 +361,7 @@ module Mongoid
 
         it "sets the counter cache equal to the relation count on addition" do
           5.times do |n|
-            article.reviews << Review.new(:is_published => true)
+            article.reviews << Review.new(is_published: true)
             article.reviews.length.should == article.review_count
           end
         end
@@ -393,7 +393,7 @@ module Mongoid
           end
 
           it "should not decrease counter when old published review is unpublished" do
-            new_review = Review.new(:is_published => true)
+            new_review = Review.new(is_published: true)
             article.reviews << new_review
             article.reviews.size.should == article.review_count
 
@@ -432,12 +432,12 @@ module Mongoid
         end
 
         let(:comment) do
-          UpdateComment.new(:is_published => true)
+          UpdateComment.new(is_published: true)
         end
 
         before do
           post.save
-          post.update_comments.create(:remark => "I agree with you", :is_published => true)
+          post.update_comments.create(remark: "I agree with you", is_published: true)
         end
 
         it "sets the target of the relation" do
@@ -454,7 +454,7 @@ module Mongoid
 
         it "sets the counter cache equal to the relation count on addition" do
           5.times do |n|
-            post.update_comments << UpdateComment.new(:is_published => true)
+            post.update_comments << UpdateComment.new(is_published: true)
             post.update_comment_count.should == post.update_comments.size
           end
         end
@@ -487,8 +487,8 @@ module Mongoid
         end
 
         it "shouldnot decrease counter when unpublished comment is deleted" do
-          post.update_comments << UpdateComment.new(:remark => "2nd comment")
-          post.update_comments << UpdateComment.new(:remark => "3rd comment", :is_published => true)
+          post.update_comments << UpdateComment.new(remark: "2nd comment")
+          post.update_comments << UpdateComment.new(remark: "3rd comment", is_published: true)
           UpdateComment.where(remark: "2nd comment").first.destroy
           post.update_comment_count.should == 2
         end
@@ -510,7 +510,7 @@ module Mongoid
           end
 
           it "should decrease counter when old published comment is unpublished" do
-            new_comment = UpdateComment.new(:is_published => true)
+            new_comment = UpdateComment.new(is_published: true)
             post.update_comments << new_comment
             post.update_comments.size.should == post.update_comment_count
 
@@ -549,12 +549,12 @@ module Mongoid
         end
 
         let(:review) do
-          UpdateReview.new(:comment => "This is nice article")
+          UpdateReview.new(comment: "This is nice article")
         end
 
         before do
           article.save
-          article.update_reviews.create(:comment => "This is very good article", :is_published => true)
+          article.update_reviews.create(comment: "This is very good article", is_published: true)
         end
 
         it "should have 1 review in reviews" do
@@ -575,7 +575,7 @@ module Mongoid
 
         it "sets the counter cache equal to the relation count on addition" do
           5.times do |n|
-            article.update_reviews << UpdateReview.new(:is_published => true)
+            article.update_reviews << UpdateReview.new(is_published: true)
             article.update_reviews.length.should == article.update_review_count
           end
         end
@@ -610,7 +610,7 @@ module Mongoid
           end
 
           it "should decrease counter when old published review is unpublished" do
-            new_review = UpdateReview.new(:is_published => true)
+            new_review = UpdateReview.new(is_published: true)
             article.update_reviews << new_review
             article.update_reviews.size.should == article.update_review_count
 
