@@ -3,7 +3,7 @@ class Book
   include Mongoid::MagicCounterCache
 
   belongs_to :library
-  embeds_many :foreign_publications, :class_name => "Book::ForeignPublication"
+  embeds_many :foreign_publications, :class_name => "Books::ForeignPublication"
   embeds_many :pages
 
   field :title

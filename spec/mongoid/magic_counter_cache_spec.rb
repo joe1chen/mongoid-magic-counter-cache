@@ -78,10 +78,10 @@ module Mongoid
           book = library.books.last
           book.foreign_publication_count.should == 0
           if Mongoid::Compatibility::Version.mongoid6_or_newer?
-            foreign_publication = Book::ForeignPublication.new(book: book)
+            foreign_publication = Books::ForeignPublication.new(book: book)
             foreign_publication.save!
           else
-            book.foreign_publications.push( Book::ForeignPublication.new )
+            book.foreign_publications.push( Books::ForeignPublication.new )
           end
           book.foreign_publication_count.should == 1
         end
