@@ -3,7 +3,7 @@ class UpdateReview
   include Mongoid::MagicCounterCache
 
   embedded_in   :article
-  counter_cache :article, :if => Proc.new { |act| (act.is_published)  }, :if_update => Proc.new { |act| act.changes['is_published'] }
+  counter_cache :article, :if => Proc.new { |act| (act.is_published)  }, :if_update => Proc.new { |act| act.changes['is_published'] || act.previous_changes['is_published'] }
 
   field :comment
   field :is_published, type: Boolean, default: false

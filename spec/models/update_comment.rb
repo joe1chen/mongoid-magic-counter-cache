@@ -7,5 +7,5 @@ class UpdateComment
   field :remark
   field :is_published, type: Boolean, default: false
 
-  counter_cache :post, :if => Proc.new { |act| (act.is_published)  }, :if_update => Proc.new { |act| act.changes['is_published'] }
+  counter_cache :post, :if => Proc.new { |act| (act.is_published)  }, :if_update => Proc.new { |act| act.changes['is_published'] || act.previous_changes['is_published'] }
 end
