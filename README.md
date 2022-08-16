@@ -1,4 +1,7 @@
-Mongoid Magic Counter Cache ![Build Status](https://github.com/joe1chen/mongoid-magic-counter-cache/actions/workflows/test.yml/badge.svg)
+Mongoid Magic Counter Cache
+
+[![Build Status](https://github.com/joe1chen/mongoid-magic-counter-cache/actions/workflows/test.yml/badge.svg)](https://github.com/joe1chen/mongoid-magic-counter-cache/actions)
+
 =======
 
 ## DESCRIPTION
