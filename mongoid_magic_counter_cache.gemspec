@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Justin Herrick"]
   s.email       = ["justin@justinherrick.com"]
-  s.homepage    = "https://github.com/jah2488/mongoid-magic-counter-cache"
+  s.homepage    = "https://github.com/joe1chen/mongoid-magic-counter-cache"
   s.summary     = %q{Setup Counter Caches in Mongoid Documents}
   s.description = %q{A quick and easy way to add counter cache functionality to model - document associations in Mongoid}
   s.license     = 'MIT'
