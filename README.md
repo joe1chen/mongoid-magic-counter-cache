@@ -30,11 +30,13 @@ The gemspec allows `mongoid >= 7.0, < 10`.
 
 ## Installation
 
-This fork is not published to RubyGems; install it from GitHub. The gem name is `mongoid_magic_counter_cache`:
+This fork is not published to RubyGems; install it from GitHub, pinned to a release tag
+([releases](https://github.com/joe1chen/mongoid-magic-counter-cache/releases)). The gem name is
+`mongoid_magic_counter_cache`:
 
 ```ruby
 # Gemfile
-gem 'mongoid_magic_counter_cache', github: 'joe1chen/mongoid-magic-counter-cache'
+gem 'mongoid_magic_counter_cache', github: 'joe1chen/mongoid-magic-counter-cache', tag: 'v2.0.0'
 ```
 
 Then `bundle install`.
@@ -170,12 +172,10 @@ To add a combination to CI, add a row to `matrix.include` in `.github/workflows/
 
 ## History
 
+Justin Herrick's original (2012) was maintained upstream through 1.1.1 (2014: the `:if` and `:if_update` options,
+Mongoid 2–4) and continued by DOGOnews in this fork: 1.1.2–1.1.3 (2018: Mongoid 5 and 6), then 2.0.0 (2026:
+Mongoid 7.0–9.x on current Ruby/Rails/MongoDB, tested by a GitHub Actions matrix).
 See [CHANGELOG.md](CHANGELOG.md).
-
-- **1.1.3+ (DOGOnews fork)** — Mongoid 6–8 support (2018–2022); GitHub Actions matrix up to Ruby 3.4 / Rails 8.0 /
-  Mongoid 9.0 / MongoDB 8.0 (2026).
-- **1.1.1** — `:if_update` option.
-- **Original** — by Justin Herrick.
 
 ## Credits
 
