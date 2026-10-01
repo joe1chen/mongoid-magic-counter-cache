@@ -61,12 +61,14 @@ module Mongoid
         it "should increase counter when new books are added" do
           library.books.push( book )
           book.destroy
+          library.reload # Mongoid >= 8 keeps destroyed docs in the loaded has_many target
           library.books.size.should == 1
         end
 
         it "should increase counter when new books are added" do
           library.books.push( book )
           book.destroy
+          library.reload
           library.books.size.should == library.book_count
         end
 
@@ -209,6 +211,7 @@ module Mongoid
         it "decreases the counter cache when records are deleted" do
           person.feelings.push( feeling )
           feeling.destroy
+          person.reload
           person.all_my_feels.should == person.feelings.size
         end
       end
@@ -264,12 +267,14 @@ module Mongoid
         it "should decrease counter when published comment is deleted" do
           post.comments.push( comment )
           comment.destroy
+          post.reload
           post.comments.size.should == 1
         end
 
         it "should increase counter when new books are added" do
           post.comments.push( comment )
           comment.destroy
+          post.reload
           post.comments.size.should == post.comment_count
         end
 
@@ -472,12 +477,14 @@ module Mongoid
         it "should decrease counter when published comment is deleted" do
           post.update_comments.push( comment )
           comment.destroy
+          post.reload
           post.update_comments.size.should == 1
         end
 
         it "should increase counter when new books are added" do
           post.update_comments.push( comment )
           comment.destroy
+          post.reload
           post.update_comments.size.should == post.update_comment_count
         end
 
