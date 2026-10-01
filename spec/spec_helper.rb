@@ -13,7 +13,9 @@ end
 Dir["#{File.dirname(__FILE__)}/models/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |c|
-    c.mock_with :rspec
+    # RSpec 3 with the RSpec 2-era `should` syntax still enabled, so the existing specs run unchanged.
+    c.expect_with(:rspec) { |e| e.syntax = [:should, :expect] }
+    c.mock_with(:rspec) { |m| m.syntax = [:should, :expect] }
     c.before(:each) do
           Mongoid::Config.respond_to?(:purge!) ? Mongoid::Config.purge! : Mongoid.master.collections.select {|c| c.name !~ /system/ }.each(&:drop)
     end
