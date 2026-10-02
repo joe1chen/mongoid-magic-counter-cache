@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - CI: test Mongoid 7.5 with Ruby driver 2.26 against MongoDB 8.0 (Ruby 2.7 / Rails 6.1).
+- CI: the `Gemfile` pins Mongoid to the matrix row's minor version (`~> X.Y.0`); it previously resolved to the
+  newest release of the major (7.6, 8.1, 9.1), so the 7.5, 8.0 and 9.0 rows were not testing those versions.
 
 ## [2.0.0] - 2026-10-01
 DOGOnews fork. Major version because the minimum supported Mongoid rose from none (1.1.3 accepted any version) to
